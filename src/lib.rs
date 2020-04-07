@@ -1,13 +1,30 @@
-use crate::func::{from_dzh, from_dzh_real};
-use crate::mifi::{Full, FullData, Mifi};
+use mifi::Mifi;
 
+use crate::base::Handler;
+use crate::front::{HqTrend, HqTrendSlice};
+use crate::func::{from_dzh, from_dzh_real};
+use crate::market::{CtpPro, Full, FullData};
+
+/// 描述了相关方法函数
 pub mod func;
+
+/// 描述了核心需求
 pub mod mifi;
+
+/// 描述了基础方法
+pub mod base;
+
+/// 描述了行情信息
+pub mod market;
+
+/// 描述了前端格式
+pub mod front;
 
 #[cfg(test)]
 mod tests {
+    use crate::base::Handler;
     use crate::func::from_dzh;
-    use crate::mifi::{FullData, Handler};
+    use crate::market::FullData;
 
     #[test]
     fn test_fulldata() {
