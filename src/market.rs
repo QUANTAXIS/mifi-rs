@@ -213,6 +213,43 @@ impl Default for CtpPro {
     }
 }
 
+impl CtpPro {
+    pub fn to_diff(&self) -> Diff {
+        Diff {
+            instrument_id: self.local_symbol.clone(),
+            volume_multiple: 0,
+            price_tick: 0.0,
+            price_decs: 0,
+            max_market_order_volume: 0,
+            min_market_order_volume: 0,
+            max_limit_order_volume: 0,
+            min_limit_order_volume: 0,
+            margin: 0.0,
+            commission: 0.0,
+            datetime: "".to_string(),
+            ask_price1: 0.0,
+            ask_volume1: 0,
+            bid_price1: 0.0,
+            bid_volume1: 0,
+            last_price: 0.0,
+            highest: 0.0,
+            lowest: 0.0,
+            amount: 0.0,
+            volume: 0,
+            open_interest: 0,
+            pre_open_interest: 0,
+            pre_close: self.pre_close,
+            open: self.open_price.clone(),
+            close: 0.0,
+            lower_limit: 0.0,
+            upper_limit: 0.0,
+            average: 0.0,
+            pre_settlement: 0.0,
+            settlement: 0.0,
+        }
+    }
+}
+
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct StockDay {
@@ -391,3 +428,105 @@ impl Handler for StockMin {
         self.amount.clone()
     }
 }
+
+
+pub struct Diff {
+    instrument_id: String,
+    //合约代码
+    volume_multiple: i64,
+    //合约乘数
+    price_tick: f64,
+    //合约价格单位
+    price_decs: i64,
+    //合约价格小数位数
+    max_market_order_volume: i64,
+    //市价单最大下单手数
+    min_market_order_volume: i64,
+    //市价单最小下单手数
+    max_limit_order_volume: i64,
+    //限价单最大下单手数
+    min_limit_order_volume: i64,
+    //限价单最小下单手数
+    margin: f64,
+    //每手保证金
+    commission: f64,
+    //每手手续费
+    datetime: String,
+    //时间
+    ask_price1: f64,
+    //卖价
+    ask_volume1: i64,
+    //卖量
+    bid_price1: f64,
+    //买价
+    bid_volume1: i64,
+    //买量
+    last_price: f64,
+    //最新价
+    highest: f64,
+    //最高价
+    lowest: f64,
+    //最低价
+    amount: f64,
+    //成交额
+    volume: i64,
+    //成交量
+    open_interest: i64,
+    //持仓量
+    pre_open_interest: i64,
+    //昨持
+    pre_close: f64,
+    //昨收
+    open: f64,
+    //今开
+    close: f64,
+    //收盘
+    lower_limit: f64,
+    //跌停
+    upper_limit: f64,
+    //涨停
+    average: f64,
+    //均价
+    pre_settlement: f64,
+    //昨结
+    settlement: f64,                            //结算价
+}
+
+impl Default for Diff {
+    fn default() -> Self {
+        Diff {
+            instrument_id: "".to_string(),
+            volume_multiple: 0,
+            price_tick: 0.0,
+            price_decs: 0,
+            max_market_order_volume: 0,
+            min_market_order_volume: 0,
+            max_limit_order_volume: 0,
+            min_limit_order_volume: 0,
+            margin: 0.0,
+            commission: 0.0,
+            datetime: "".to_string(),
+            ask_price1: 0.0,
+            ask_volume1: 0,
+            bid_price1: 0.0,
+            bid_volume1: 0,
+            last_price: 0.0,
+            highest: 0.0,
+            lowest: 0.0,
+            amount: 0.0,
+            volume: 0,
+            open_interest: 0,
+            pre_open_interest: 0,
+            pre_close: 0.0,
+            open: 0.0,
+            close: 0.0,
+            lower_limit: 0.0,
+            upper_limit: 0.0,
+            average: 0.0,
+            pre_settlement: 0.0,
+            settlement: 0.0,
+        }
+    }
+}
+
+

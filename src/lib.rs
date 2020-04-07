@@ -23,7 +23,7 @@ pub mod front;
 #[cfg(test)]
 mod tests {
     use crate::base::Handler;
-    use crate::func::from_dzh;
+    use crate::func::from_history;
     use crate::market::FullData;
 
     #[test]
@@ -70,7 +70,7 @@ mod tests {
     "datetime" : "2020-02-05 10:17:57"}]"#;
         let val: Vec<FullData> = serde_json::from_str(strs).unwrap();
         println!("{}", val[0].to_json());
-        let v = from_dzh(val, 1 as f64, "stock".to_string());
+        let v = from_history(val, 1 as f64, "stock".to_string());
         println!("v: {:?}", v.to_json())
     }
 }

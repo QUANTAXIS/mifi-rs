@@ -1,7 +1,7 @@
 use std::collections::BTreeMap;
 
 use crate::base::Handler;
-use crate::market::FullData;
+use crate::market::{CtpPro, Diff, FullData};
 use crate::mifi::Mifi;
 
 /// 从DZH中导入数据
