@@ -1,4 +1,5 @@
-use std::collections::{HashMap, BTreeMap};
+use std::collections::{BTreeMap, HashMap};
+
 use serde::{Deserialize, Serialize};
 
 pub trait Handler {
@@ -62,7 +63,7 @@ pub struct FullData {
 
 impl Handler for FullData {
     fn get_datetime(&self) -> String {
-        return self.datetime.clone();
+        return self.time.clone();
     }
 }
 
