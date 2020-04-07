@@ -277,7 +277,7 @@ pub struct FutureMin {
     pub frequence: String,
     pub position: f64,
     pub amount: f64,
-    pub tradetime: f64,
+    pub tradetime: String,
 }
 
 impl Handler for FutureMin {
