@@ -1,8 +1,8 @@
+use crate::func::{from_dzh, from_dzh_real};
+use crate::mifi::{Full, FullData, Mifi};
+
 pub mod func;
 pub mod mifi;
-
-use crate::func::from_dzh;
-use crate::mifi::{Mifi, FullData, Full};
 
 #[cfg(test)]
 mod tests {
