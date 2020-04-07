@@ -29,7 +29,7 @@ pub struct Mifi<T>
     pub history: BTreeMap<String, T>,
     pub portfolio: HashMap<String, T>,
     pub format: String,
-    pub real: Vec<T>,
+    pub real: T,
     pub zip: bool,
 }
 
