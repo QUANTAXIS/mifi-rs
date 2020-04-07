@@ -280,6 +280,25 @@ pub struct FutureMin {
     pub tradetime: String,
 }
 
+impl Default for FutureMin {
+    fn default() -> Self {
+        FutureMin {
+            open: 0.0,
+            close: 0.0,
+            high: 0.0,
+            low: 0.0,
+            volume: 0.0,
+            date: "".to_string(),
+            datetime: "".to_string(),
+            code: "".to_string(),
+            frequence: "".to_string(),
+            position: 0.0,
+            amount: 0.0,
+            tradetime: "".to_string(),
+        }
+    }
+}
+
 impl Handler for FutureMin {
     fn get_datetime(&self) -> String {
         self.datetime.clone()
