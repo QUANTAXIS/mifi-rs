@@ -336,3 +336,58 @@ impl Handler for FutureMin {
         self.amount.clone()
     }
 }
+
+impl Default for StockMin {
+    fn default() -> Self {
+        StockMin {
+            open: 0.0,
+            close: 0.0,
+            high: 0.0,
+            low: 0.0,
+            volume: 0.0,
+            amount: 0.0,
+            date: "".to_string(),
+            datetime: "".to_string(),
+            code: "".to_string(),
+            frequence: "".to_string(),
+        }
+    }
+}
+
+impl Handler for StockMin {
+    fn get_datetime(&self) -> String {
+        self.datetime.clone()
+    }
+
+    fn get_code(&self) -> String {
+        self.code.clone()
+    }
+
+    fn get_date(&self) -> String {
+        unimplemented!()
+    }
+
+    fn get_open(&self) -> f64 {
+        self.open.clone()
+    }
+
+    fn get_close(&self) -> f64 {
+        self.close.clone()
+    }
+
+    fn get_high(&self) -> f64 {
+        self.high.clone()
+    }
+
+    fn get_low(&self) -> f64 {
+        self.low.clone()
+    }
+
+    fn get_vol(&self) -> f64 {
+        self.volume.clone()
+    }
+
+    fn get_amount(&self) -> f64 {
+        self.amount.clone()
+    }
+}
