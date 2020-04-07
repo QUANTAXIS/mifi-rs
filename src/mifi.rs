@@ -99,6 +99,97 @@ pub struct Full {
 
 /// ctpx提供的数据源
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Ctpx {}
+pub struct CtpPro {
+    ask_price_1: f64,
+    ask_price_2: f64,
+    ask_price_3: f64,
+    ask_price_4: f64,
+    ask_price_5: f64,
+    ask_volume_1: f64,
+    ask_volume_2: f64,
+    ask_volume_3: f64,
+    ask_volume_4: f64,
+    ask_volume_5: f64,
+    average_price: f64,
+    bid_price_1: f64,
+    bid_price_2: f64,
+    bid_price_3: f64,
+    bid_price_4: f64,
+    bid_price_5: f64,
+    bid_volume_1: f64,
+    bid_volume_2: f64,
+    bid_volume_3: f64,
+    bid_volume_4: f64,
+    bid_volume_5: f64,
+    datetime: String,
+    exchange: String,
+    gateway_name: String,
+    high_price: f64,
+    last_price: f64,
+    last_volume: f64,
+    limit_down: f64,
+    limit_up: f64,
+    local_symbol: String,
+    low_price: f64,
+    name: String,
+    open_interest: f64,
+    open_price: f64,
+    preSettlementPrice: f64,
+    pre_close: f64,
+    symbol: String,
+    volume: f64,
+}
+
+impl Handler for CtpPro {
+    fn get_datetime(&self) -> String {
+        return self.datetime.clone();
+    }
+}
+
+impl Default for CtpPro {
+    fn default() -> Self {
+        CtpPro {
+            ask_price_1: 0.0,
+            ask_price_2: 0.0,
+            ask_price_3: 0.0,
+            ask_price_4: 0.0,
+            ask_price_5: 0.0,
+            ask_volume_1: 0.0,
+            ask_volume_2: 0.0,
+            ask_volume_3: 0.0,
+            ask_volume_4: 0.0,
+            ask_volume_5: 0.0,
+            average_price: 0.0,
+            bid_price_1: 0.0,
+            bid_price_2: 0.0,
+            bid_price_3: 0.0,
+            bid_price_4: 0.0,
+            bid_price_5: 0.0,
+            bid_volume_1: 0.0,
+            bid_volume_2: 0.0,
+            bid_volume_3: 0.0,
+            bid_volume_4: 0.0,
+            bid_volume_5: 0.0,
+            datetime: "".to_string(),
+            exchange: "".to_string(),
+            gateway_name: "".to_string(),
+            high_price: 0.0,
+            last_price: 0.0,
+            last_volume: 0.0,
+            limit_down: 0.0,
+            limit_up: 0.0,
+            local_symbol: "".to_string(),
+            low_price: 0.0,
+            name: "".to_string(),
+            open_interest: 0.0,
+            open_price: 0.0,
+            preSettlementPrice: 0.0,
+            pre_close: 0.0,
+            symbol: "".to_string(),
+            volume: 0.0,
+        }
+    }
+}
+
 
 
