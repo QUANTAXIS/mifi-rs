@@ -27,18 +27,16 @@ pub fn from_dzh<T>(data: Vec<T>, frq: f64, market: String) -> Mifi<T>
 pub fn from_dzh_real<T>(data: T, frq: f64, market: String) -> Mifi<T>
     where T: Handler
 {
-    let mut mifi = Mifi {
+    Mifi {
         topic: "".to_string(),
         frq: frq,
         market: market,
         history: Default::default(),
         portfolio: Default::default(),
         format: "".to_string(),
-        real: Default::default(),
+        real: data,
         zip: false,
-    };
-    mifi.real = data;
-    mifi
+    }
 }
 
 
