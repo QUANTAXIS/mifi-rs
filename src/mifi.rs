@@ -54,7 +54,6 @@ pub struct FullData {
     pub tickcount: f64,
     pub time: String,
     pub vol: f64,
-    pub datetime: String,
     pub BuyPrices: Vec<f64>,
     pub BuyVols: Vec<f64>,
     pub SellPrices: Vec<f64>,
