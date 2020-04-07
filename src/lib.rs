@@ -2,7 +2,7 @@ use mifi::Mifi;
 
 use crate::base::Handler;
 use crate::front::{HqTrend, HqTrendSlice};
-use crate::func::{from_dzh, from_dzh_real};
+use crate::func::{from_history, from_real};
 use crate::market::{CtpPro, Full, FullData};
 
 /// 描述了相关方法函数
