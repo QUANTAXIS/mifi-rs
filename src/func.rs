@@ -6,7 +6,7 @@ use crate::mifi::{FullData, Handler, Mifi};
 /// 确保输入的是一个vector
 /// 注意T是一个泛型， 应该是单条数据实现
 pub fn from_dzh<T>(data: Vec<T>, frq: f64, market: String) -> Mifi<T>
-    where T: Handler
+    where T: Handler + Default
 {
     let mut mifi = Mifi {
         topic: "".to_string(),

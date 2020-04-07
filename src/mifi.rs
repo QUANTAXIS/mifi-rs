@@ -61,9 +61,32 @@ pub struct FullData {
     pub SellVols: Vec<f64>,
 }
 
+
 impl Handler for FullData {
     fn get_datetime(&self) -> String {
         return self.time.clone();
+    }
+}
+
+impl Default for FullData {
+    fn default() -> Self {
+        FullData {
+            amount: 0.0,
+            close: 0.0,
+            code: "".to_string(),
+            high: 0.0,
+            low: 0.0,
+            market: "".to_string(),
+            open: 0.0,
+            productid: 0.0,
+            tickcount: 0.0,
+            time: "".to_string(),
+            vol: 0.0,
+            BuyPrices: vec![],
+            BuyVols: vec![],
+            SellPrices: vec![],
+            SellVols: vec![],
+        }
     }
 }
 
