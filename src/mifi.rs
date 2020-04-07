@@ -45,7 +45,7 @@ impl<T> Mifi<T>
             name: "".to_string(),
             symbol: code,
             time: slice.last().unwrap().get_datetime(),
-            date: "".to_string(),
+            date: time,
             price: 0.0,
             yclose: slice[0].open,
             open: slice.last().unwrap().open,
@@ -53,7 +53,9 @@ impl<T> Mifi<T>
             low: slice.last().unwrap().low,
             vol: slice.last().unwrap().vol,
             amount: slice.last().unwrap().amount,
+            minutecount: slice.len().clone() as f64,
             minute: slice,
+
         }
     }
 }

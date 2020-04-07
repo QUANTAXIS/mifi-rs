@@ -31,6 +31,7 @@ pub struct HqTrend {
     pub low: f64,
     pub vol: f64,
     pub amount: f64,
+    pub minutecount: f64,
     pub minute: Vec<HqTrendSlice>,
 }
 
