@@ -6,7 +6,9 @@ pub trait Handler {
     fn get_datetime(&self) -> String;
 
     fn to_json(&self) -> String
-        where Self: Serialize {
+        where
+            Self: Serialize,
+    {
         serde_json::to_string(&self).unwrap()
     }
 }
@@ -21,8 +23,7 @@ pub trait Handler {
 /// real: 实时行情
 /// zip:是否压缩发送
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Mifi<T>
-{
+pub struct Mifi<T> {
     pub topic: String,
     pub frq: f64,
     pub market: String,
@@ -34,13 +35,13 @@ pub struct Mifi<T>
 }
 
 impl<T> Mifi<T>
-    where T: Handler + Serialize
+    where
+        T: Handler + Serialize,
 {
     pub fn to_json(&self) -> String {
         serde_json::to_string(&self).unwrap()
     }
 }
-
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct FullData {
@@ -60,7 +61,6 @@ pub struct FullData {
     pub SellPrices: Vec<f64>,
     pub SellVols: Vec<f64>,
 }
-
 
 impl Handler for FullData {
     fn get_datetime(&self) -> String {
@@ -90,7 +90,6 @@ impl Default for FullData {
     }
 }
 
-
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Full {
     pub MarketFullName: String,
@@ -100,44 +99,44 @@ pub struct Full {
 /// ctpx提供的数据源
 #[derive(Serialize, Deserialize, Debug)]
 pub struct CtpPro {
-    ask_price_1: f64,
-    ask_price_2: f64,
-    ask_price_3: f64,
-    ask_price_4: f64,
-    ask_price_5: f64,
-    ask_volume_1: f64,
-    ask_volume_2: f64,
-    ask_volume_3: f64,
-    ask_volume_4: f64,
-    ask_volume_5: f64,
-    average_price: f64,
-    bid_price_1: f64,
-    bid_price_2: f64,
-    bid_price_3: f64,
-    bid_price_4: f64,
-    bid_price_5: f64,
-    bid_volume_1: f64,
-    bid_volume_2: f64,
-    bid_volume_3: f64,
-    bid_volume_4: f64,
-    bid_volume_5: f64,
-    datetime: String,
-    exchange: String,
-    gateway_name: String,
-    high_price: f64,
-    last_price: f64,
-    last_volume: f64,
-    limit_down: f64,
-    limit_up: f64,
-    local_symbol: String,
-    low_price: f64,
-    name: String,
-    open_interest: f64,
-    open_price: f64,
-    preSettlementPrice: f64,
-    pre_close: f64,
-    symbol: String,
-    volume: f64,
+    pub ask_price_1: f64,
+    pub ask_price_2: f64,
+    pub ask_price_3: f64,
+    pub ask_price_4: f64,
+    pub ask_price_5: f64,
+    pub ask_volume_1: f64,
+    pub ask_volume_2: f64,
+    pub ask_volume_3: f64,
+    pub ask_volume_4: f64,
+    pub ask_volume_5: f64,
+    pub average_price: f64,
+    pub bid_price_1: f64,
+    pub bid_price_2: f64,
+    pub bid_price_3: f64,
+    pub bid_price_4: f64,
+    pub bid_price_5: f64,
+    pub bid_volume_1: f64,
+    pub bid_volume_2: f64,
+    pub bid_volume_3: f64,
+    pub bid_volume_4: f64,
+    pub bid_volume_5: f64,
+    pub datetime: String,
+    pub exchange: String,
+    pub gateway_name: String,
+    pub high_price: f64,
+    pub last_price: f64,
+    pub last_volume: f64,
+    pub limit_down: f64,
+    pub limit_up: f64,
+    pub local_symbol: String,
+    pub low_price: f64,
+    pub name: String,
+    pub open_interest: f64,
+    pub open_price: f64,
+    pub preSettlementPrice: f64,
+    pub pre_close: f64,
+    pub symbol: String,
+    pub volume: f64,
 }
 
 impl Handler for CtpPro {
@@ -190,6 +189,3 @@ impl Default for CtpPro {
         }
     }
 }
-
-
-
