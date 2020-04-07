@@ -26,7 +26,7 @@ pub struct HqTrend {
     pub date: String,
     pub price: f64,
     pub open: f64,
-    pub close: f64,
+    pub yclose: f64,
     pub high: f64,
     pub low: f64,
     pub vol: f64,

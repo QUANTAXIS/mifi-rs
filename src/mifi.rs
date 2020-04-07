@@ -36,21 +36,23 @@ impl<T> Mifi<T>
 
     pub fn hqchart_trend(&self) -> HqTrend {
         let slice: Vec<HqTrendSlice> = self.history.values().into_iter().map(|x| {
-            x.to_hqchart_trend()
+            x.to_hqchart_trend_slice()
         }).collect();
         let code = slice[0].code.clone();
+        let time = slice[0].get_datetime();
+
         HqTrend {
             name: "".to_string(),
             symbol: code,
-            time: "".to_string(),
+            time: slice.last().unwrap().get_datetime(),
             date: "".to_string(),
             price: 0.0,
-            open: 0.0,
-            close: 0.0,
-            high: 0.0,
-            low: 0.0,
-            vol: 0.0,
-            amount: 0.0,
+            yclose: slice[0].open,
+            open: slice.last().unwrap().open,
+            high: slice.last().unwrap().high,
+            low: slice.last().unwrap().low,
+            vol: slice.last().unwrap().vol,
+            amount: slice.last().unwrap().amount,
             minute: slice,
         }
     }

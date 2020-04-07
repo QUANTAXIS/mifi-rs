@@ -20,7 +20,7 @@ pub trait Handler {
     fn get_low(&self) -> f64;
     fn get_vol(&self) -> f64;
     fn get_amount(&self) -> f64;
-    fn to_hqchart_trend(&self) -> HqTrendSlice {
+    fn to_hqchart_trend_slice(&self) -> HqTrendSlice {
         HqTrendSlice {
             price: self.get_close(),
             open: self.get_open(),
