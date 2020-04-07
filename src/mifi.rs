@@ -68,3 +68,14 @@ impl Handler for FullData {
 }
 
 
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Full {
+    pub MarketFullName: String,
+    pub products: Vec<FullData>,
+}
+
+/// ctpx提供的数据源
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Ctpx {}
+
+

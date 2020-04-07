@@ -2,7 +2,7 @@ pub mod func;
 pub mod mifi;
 
 use crate::func::from_dzh;
-use crate::mifi::{Mifi, FullData};
+use crate::mifi::{Mifi, FullData, Full};
 
 #[cfg(test)]
 mod tests {
