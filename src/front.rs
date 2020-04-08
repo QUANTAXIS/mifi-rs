@@ -103,7 +103,7 @@ impl Default for Kline {
     fn default() -> Self {
         Kline {
             code: "".to_string(),
-            datetime: "2010-01-01 00:00:00".to_string(),
+            datetime: "2010-01-01 00:00:00.1".to_string(),
             open: 0.0,
             high: 0.0,
             low: 0.0,
