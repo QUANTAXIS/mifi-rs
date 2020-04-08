@@ -74,7 +74,7 @@ impl Handler for HqTrendSlice {
     }
 }
 
-
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Kline {
     pub code: String,
     pub datetime: String,
@@ -83,6 +83,34 @@ pub struct Kline {
     pub low: f64,
     pub close: f64,
     pub vol: f64,
+}
+
+impl Clone for Kline {
+    fn clone(&self) -> Self {
+        Kline {
+            code: self.code.clone(),
+            datetime: self.datetime.clone(),
+            open: self.open.clone(),
+            high: self.high.clone(),
+            low: self.low.clone(),
+            close: self.close.clone(),
+            vol: self.vol.clone(),
+        }
+    }
+}
+
+impl Default for Kline {
+    fn default() -> Self {
+        Kline {
+            code: "".to_string(),
+            datetime: "2010-01-01 00:00:00".to_string(),
+            open: 0.0,
+            high: 0.0,
+            low: 0.0,
+            close: 0.0,
+            vol: 0.0,
+        }
+    }
 }
 
 impl Handler for Kline {
