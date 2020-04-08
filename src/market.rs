@@ -29,7 +29,7 @@ impl Handler for FullData {
     }
 
     fn get_code(&self) -> String {
-        unimplemented!()
+        self.code.clone()
     }
 
     fn get_date(&self) -> String {
@@ -37,27 +37,52 @@ impl Handler for FullData {
     }
 
     fn get_open(&self) -> f64 {
-        unimplemented!()
+        self.open.clone()
     }
 
     fn get_close(&self) -> f64 {
-        unimplemented!()
+        self.close.clone()
     }
 
     fn get_high(&self) -> f64 {
-        unimplemented!()
+        self.high.clone()
     }
 
     fn get_low(&self) -> f64 {
-        unimplemented!()
+        self.low.clone()
     }
 
     fn get_vol(&self) -> f64 {
-        unimplemented!()
+        self.vol.clone()
     }
 
     fn get_amount(&self) -> f64 {
-        unimplemented!()
+        self.amount.clone()
+    }
+
+    fn set_datetime(&mut self, datetime: String) {
+        self.time = datetime;
+    }
+    fn set_open(&mut self, open: f64) {
+        self.open = open;
+    }
+
+    fn set_high(&mut self, high: f64) {
+        self.high = high;
+    }
+
+    fn set_low(&mut self, low: f64) {
+        self.low = low;
+    }
+    fn set_close(&mut self, close: f64) {
+        self.close = close
+    }
+    fn set_vol(&mut self, vol: f64) {
+        self.vol = vol;
+    }
+
+    fn set_amount(&mut self, amount: f64) {
+        self.amount = amount
     }
 }
 
