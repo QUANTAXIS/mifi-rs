@@ -209,7 +209,7 @@ impl Handler for CtpPro {
     }
 
     fn get_vol(&self) -> f64 {
-        self.volume
+        self.volume.clone()
     }
 
     fn get_amount(&self) -> f64 {
