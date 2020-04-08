@@ -71,7 +71,8 @@ mod tests {
         let val: Vec<FullData> = serde_json::from_str(strs).unwrap();
         println!("{}", val[0].to_json());
         let v = from_history(val, 1 as f64, "stock".to_string());
-        println!("v: {:?}", v.to_json())
+        println!("v: {:?}", v.to_json());
+        println!("v: {:?}", v.clone())
     }
 }
 

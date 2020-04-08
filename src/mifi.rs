@@ -1,3 +1,4 @@
+use std::clone::Clone;
 use std::collections::{BTreeMap, HashMap};
 
 use serde::{Deserialize, Serialize};
@@ -14,7 +15,7 @@ use crate::front::{HqTrend, HqTrendSlice};
 /// format: 格式成指定数据源
 /// real: 实时行情
 /// zip:是否压缩发送
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Clone, Deserialize, Debug)]
 pub struct Mifi<T> {
     pub topic: String,
     pub frq: f64,

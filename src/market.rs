@@ -1,8 +1,10 @@
+use std::clone::Clone;
+
 use serde::{Deserialize, Serialize};
 
 use crate::base::Handler;
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Clone, Deserialize, Debug)]
 pub struct FullData {
     pub amount: f64,
     pub close: f64,
@@ -81,14 +83,14 @@ impl Default for FullData {
     }
 }
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Clone, Deserialize, Debug)]
 pub struct Full {
     pub MarketFullName: String,
     pub products: Vec<FullData>,
 }
 
 /// ctpx提供的数据源
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Clone, Deserialize, Debug)]
 pub struct CtpPro {
     pub ask_price_1: f64,
     pub ask_price_2: f64,
@@ -251,7 +253,7 @@ impl CtpPro {
 }
 
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Clone, Deserialize, Debug)]
 pub struct StockDay {
     pub open: f64,
     pub close: f64,
@@ -265,7 +267,7 @@ pub struct StockDay {
 //    date_stamp : f64
 }
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Clone, Deserialize, Debug)]
 pub struct StockMin {
     pub open: f64,
     pub close: f64,
@@ -285,7 +287,7 @@ pub struct StockMin {
 }
 
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Clone, Deserialize, Debug)]
 pub struct FutureDay {
     pub open: f64,
     pub close: f64,
@@ -299,7 +301,7 @@ pub struct FutureDay {
 }
 
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Clone, Deserialize, Debug)]
 pub struct FutureMin {
     pub open: f64,
     pub close: f64,
@@ -429,7 +431,7 @@ impl Handler for StockMin {
     }
 }
 
-
+#[derive(Serialize, Clone, Deserialize, Debug)]
 pub struct Diff {
     instrument_id: String,
     //合约代码

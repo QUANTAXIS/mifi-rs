@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 
 use crate::base::Handler;
 
-#[derive(Deserialize, Serialize, Debug)]
+#[derive(Deserialize, Clone, Serialize, Debug)]
 pub struct HqTrendSlice {
     pub price: f64,
     pub open: f64,
@@ -18,7 +18,7 @@ pub struct HqTrendSlice {
     pub close: f64,
 }
 
-#[derive(Deserialize, Serialize, Debug)]
+#[derive(Deserialize, Clone, Serialize, Debug)]
 pub struct HqTrend {
     pub name: String,
     pub symbol: String,
