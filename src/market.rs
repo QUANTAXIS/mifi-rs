@@ -4,7 +4,7 @@ use serde::{Deserialize, Serialize};
 
 use crate::base::Handler;
 
-#[derive(Serialize, Clone, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct FullData {
     pub amount: f64,
     pub close: f64,
@@ -83,6 +83,28 @@ impl Handler for FullData {
 
     fn set_amount(&mut self, amount: f64) {
         self.amount = amount
+    }
+}
+
+impl Clone for FullData {
+    fn clone(&self) -> Self {
+        FullData {
+            amount: self.amount.clone(),
+            close: self.close.clone(),
+            code: self.code.clone(),
+            high: self.high.clone(),
+            low: self.low.clone(),
+            market: self.market.clone(),
+            open: self.open.clone(),
+            productid: self.productid.clone(),
+            tickcount: self.tickcount.clone(),
+            time: self.time.clone(),
+            vol: self.vol.clone(),
+            BuyPrices: self.BuyPrices.clone(),
+            BuyVols: self.BuyVols.clone(),
+            SellPrices: self.SellPrices.clone(),
+            SellVols: self.SellVols.clone(),
+        }
     }
 }
 

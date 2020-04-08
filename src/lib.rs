@@ -1,7 +1,7 @@
 use mifi::Mifi;
 
 use crate::base::Handler;
-use crate::front::{HqTrend, HqTrendSlice};
+use crate::front::{HqTrend, HqTrendSlice, Kline};
 use crate::func::{from_history, from_real};
 use crate::market::{CtpPro, Full, FullData};
 
