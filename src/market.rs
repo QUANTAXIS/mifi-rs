@@ -197,7 +197,7 @@ impl Handler for CtpPro {
     }
 
     fn get_close(&self) -> f64 {
-        unimplemented!()
+        self.last_price.clone()
     }
 
     fn get_high(&self) -> f64 {
@@ -209,11 +209,11 @@ impl Handler for CtpPro {
     }
 
     fn get_vol(&self) -> f64 {
-        unimplemented!()
+        self.volume
     }
 
     fn get_amount(&self) -> f64 {
-        unimplemented!()
+        0 as f64
     }
 }
 
