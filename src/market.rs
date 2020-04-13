@@ -1,8 +1,9 @@
 use std::clone::Clone;
 use actix_derive::Message;
 use serde::{Deserialize, Serialize};
-
+use chrono::prelude::*;
 use crate::base::Handler;
+
 #[derive(Message)]
 #[rtype(result = "()")]
 #[derive(Serialize, Deserialize, Debug)]
@@ -121,7 +122,7 @@ impl Default for FullData {
             open: 0.0,
             productid: 0.0,
             tickcount: 0.0,
-            time: "2010-01-01 00:00:00".to_string(),
+            time: "1900-01-01 00:00:00".to_string(),
             vol: 0.0,
             BuyPrices: vec![],
             BuyVols: vec![],
@@ -130,6 +131,7 @@ impl Default for FullData {
         }
     }
 }
+
 #[derive(Message)]
 #[rtype(result = "()")]
 #[derive(Serialize, Clone, Deserialize, Debug)]
@@ -245,7 +247,7 @@ impl Default for CtpPro {
             bid_volume_3: 0.0,
             bid_volume_4: 0.0,
             bid_volume_5: 0.0,
-            datetime: "2010-01-01 00:00:00.10000".to_string(),
+            datetime: "1900-01-01 00:00:00.10000".to_string(),
             exchange: "".to_string(),
             gateway_name: "".to_string(),
             high_price: 0.0,
@@ -279,7 +281,7 @@ impl CtpPro {
             min_limit_order_volume: 0,
             margin: 0.0,
             commission: 0.0,
-            datetime: "2010-01-01 00:00:00".to_string(),
+            datetime: "1900-01-01 00:00:00".to_string(),
             ask_price1: 0.0,
             ask_volume1: 0,
             bid_price1: 0.0,
@@ -318,6 +320,7 @@ pub struct StockDay {
     pub code: String,
 //    date_stamp : f64
 }
+
 #[derive(Message)]
 #[rtype(result = "()")]
 #[derive(Serialize, Clone, Deserialize, Debug)]
@@ -383,7 +386,7 @@ impl Default for FutureMin {
             low: 0.0,
             volume: 0.0,
             date: "".to_string(),
-            datetime: "2010-01-01 00:00:00".to_string(),
+            datetime: "1900-01-01 00:00:00".to_string(),
             code: "".to_string(),
             frequence: "".to_string(),
             position: 0.0,
@@ -485,6 +488,7 @@ impl Handler for StockMin {
         self.amount.clone()
     }
 }
+
 #[derive(Message)]
 #[rtype(result = "()")]
 #[derive(Serialize, Clone, Deserialize, Debug)]
@@ -563,7 +567,7 @@ impl Default for Diff {
             min_limit_order_volume: 0,
             margin: 0.0,
             commission: 0.0,
-            datetime: "2010-01-01 00:00:00.10000".to_string(),
+            datetime: "1900-01-01 00:00:00.10000".to_string(),
             ask_price1: 0.0,
             ask_volume1: 0,
             bid_price1: 0.0,
@@ -587,4 +591,96 @@ impl Default for Diff {
     }
 }
 
+#[derive(Message)]
+#[rtype(result = "()")]
+#[derive(Serialize, Deserialize, Debug)]
+struct L2xHis
+{
+    time: String,
+    price: f64,
+    vol: f64,
+    buyorsell: f64,
+    date: String,
+    datetime: String,
+    code: String,
+    date_stamp: f64,
+    time_stamp: f64,
+    #[serde(rename(serialize = "type", deserialize = "type"))]   //type字段 实现与数据库中读取不进行冲突
+    type_: String,
+    order: f64,
+}
+
+impl Default for L2xHis {
+    fn default() -> Self {
+        L2xHis {
+            time: "25:00".to_string(),
+            price: 0.0,
+            vol: 0.0,
+            buyorsell: 0.0,
+            date: "1900-01-01".to_string(),
+            datetime: "1900-01-01 00:00:00".to_string(),
+            code: "".to_string(),
+            date_stamp: 0.0,
+            time_stamp: 0.0,
+            type_: "tick".to_string(),
+            order: 0.0,
+        }
+    }
+}
+
+impl Clone for L2xHis {
+    fn clone(&self) -> Self {
+        L2xHis {
+            time: self.time.clone(),
+            price: self.price.clone(),
+            vol: self.vol.clone(),
+            buyorsell: self.buyorsell.clone(),
+            date: self.date.clone(),
+            datetime: self.datetime.clone(),
+            code: self.code.clone(),
+            date_stamp: self.date_stamp.clone(),
+            time_stamp: self.time_stamp.clone(),
+            type_: self.type_.clone(),
+            order: self.order.clone(),
+        }
+    }
+}
+
+impl Handler for L2xHis {
+    fn get_datetime(&self) -> String {
+        self.datetime.clone()
+    }
+
+    fn get_code(&self) -> String {
+        self.code.clone()
+    }
+
+    fn get_date(&self) -> String {
+        self.date.clone()
+    }
+
+    fn get_open(&self) -> f64 {
+        unimplemented!()
+    }
+
+    fn get_close(&self) -> f64 {
+        self.price.clone()
+    }
+
+    fn get_high(&self) -> f64 {
+        unimplemented!()
+    }
+
+    fn get_low(&self) -> f64 {
+        unimplemented!()
+    }
+
+    fn get_vol(&self) -> f64 {
+        self.vol.clone()
+    }
+
+    fn get_amount(&self) -> f64 {
+        unimplemented!()
+    }
+}
 
