@@ -1,7 +1,9 @@
 use serde::{Deserialize, Serialize};
-
+use actix_derive::{Message};
 use crate::base::Handler;
 
+#[derive(Message)]
+#[rtype(result = "()")]
 #[derive(Deserialize, Clone, Serialize, Debug)]
 pub struct HqTrendSlice {
     pub price: f64,
@@ -18,6 +20,8 @@ pub struct HqTrendSlice {
     pub close: f64,
 }
 
+#[derive(Message)]
+#[rtype(result = "()")]
 #[derive(Deserialize, Clone, Serialize, Debug)]
 pub struct HqTrend {
     pub name: String,
@@ -74,6 +78,8 @@ impl Handler for HqTrendSlice {
     }
 }
 
+#[derive(Message)]
+#[rtype(result = "()")]
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Kline {
     pub code: String,

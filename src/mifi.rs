@@ -5,6 +5,7 @@ use serde::{Deserialize, Serialize};
 
 use crate::base::*;
 use crate::front::{HqTrend, HqTrendSlice};
+use actix_derive::Message;
 
 /// 此行情协议主要是为沟通多个行情之间的数据然后进行交换切割， 注意T是某一类数据， 比如k线数据，
 /// topic： 主题
@@ -15,6 +16,8 @@ use crate::front::{HqTrend, HqTrendSlice};
 /// format: 格式成指定数据源
 /// real: 实时行情
 /// zip:是否压缩发送
+#[derive(Message)]
+#[rtype(result = "()")]
 #[derive(Serialize, Clone, Deserialize, Debug)]
 pub struct Mifi<T> {
     pub topic: String,
