@@ -594,20 +594,20 @@ impl Default for Diff {
 #[derive(Message)]
 #[rtype(result = "()")]
 #[derive(Serialize, Deserialize, Debug)]
-struct L2xHis
+pub struct L2xHis
 {
-    time: String,
-    price: f64,
-    vol: f64,
-    buyorsell: f64,
-    date: String,
-    datetime: String,
-    code: String,
-    date_stamp: f64,
-    time_stamp: f64,
+    pub time: String,
+    pub price: f64,
+    pub vol: f64,
+    pub buyorsell: f64,
+    pub date: String,
+    pub datetime: String,
+    pub code: String,
+    pub date_stamp: f64,
+    pub time_stamp: f64,
     #[serde(rename(serialize = "type", deserialize = "type"))]   //type字段 实现与数据库中读取不进行冲突
-    type_: String,
-    order: f64,
+    pub type_: String,
+    pub order: f64,
 }
 
 impl Default for L2xHis {
