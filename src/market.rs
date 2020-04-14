@@ -1,11 +1,8 @@
 use std::clone::Clone;
-use actix_derive::Message;
 use serde::{Deserialize, Serialize};
 use chrono::prelude::*;
 use crate::base::Handler;
 
-#[derive(Message)]
-#[rtype(result = "()")]
 #[derive(Serialize, Deserialize, Debug)]
 pub struct FullData {
     pub amount: f64,
@@ -132,8 +129,6 @@ impl Default for FullData {
     }
 }
 
-#[derive(Message)]
-#[rtype(result = "()")]
 #[derive(Serialize, Clone, Deserialize, Debug)]
 pub struct Full {
     pub MarketFullName: String,
@@ -141,8 +136,6 @@ pub struct Full {
 }
 
 /// ctpx提供的数据源
-#[derive(Message)]
-#[rtype(result = "()")]
 #[derive(Serialize, Clone, Deserialize, Debug)]
 pub struct CtpPro {
     pub ask_price_1: f64,
@@ -305,8 +298,7 @@ impl CtpPro {
     }
 }
 
-#[derive(Message)]
-#[rtype(result = "()")]
+
 #[derive(Serialize, Clone, Deserialize, Debug)]
 pub struct StockDay {
     pub open: f64,
@@ -321,8 +313,6 @@ pub struct StockDay {
 //    date_stamp : f64
 }
 
-#[derive(Message)]
-#[rtype(result = "()")]
 #[derive(Serialize, Clone, Deserialize, Debug)]
 pub struct StockMin {
     pub open: f64,
@@ -342,8 +332,6 @@ pub struct StockMin {
 
 }
 
-#[derive(Message)]
-#[rtype(result = "()")]
 #[derive(Serialize, Clone, Deserialize, Debug)]
 pub struct FutureDay {
     pub open: f64,
@@ -357,8 +345,6 @@ pub struct FutureDay {
 //    date_stamp : f64
 }
 
-#[derive(Message)]
-#[rtype(result = "()")]
 #[derive(Serialize, Clone, Deserialize, Debug)]
 pub struct FutureMin {
     pub open: f64,
@@ -489,8 +475,6 @@ impl Handler for StockMin {
     }
 }
 
-#[derive(Message)]
-#[rtype(result = "()")]
 #[derive(Serialize, Clone, Deserialize, Debug)]
 pub struct Diff {
     instrument_id: String,
@@ -591,8 +575,6 @@ impl Default for Diff {
     }
 }
 
-#[derive(Message)]
-#[rtype(result = "()")]
 #[derive(Serialize, Deserialize, Debug)]
 pub struct L2xHis
 {
