@@ -3,6 +3,7 @@ name = "Mifi"
 version = "0.1.0"
 authors = ["somewheve <somewheve@gmail.com>"]
 edition = "2018"
+description = "描述为基本行情结构体吗,提供了一种较为统一式转换方法"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 

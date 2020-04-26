@@ -298,7 +298,7 @@ impl CtpPro {
     }
 }
 
-
+/// ---------------------------------------------------------------- StockDay------------------------------------------------------------------------
 #[derive(Serialize, Clone, Deserialize, Debug)]
 pub struct StockDay {
     pub open: f64,
@@ -313,25 +313,92 @@ pub struct StockDay {
 //    date_stamp : f64
 }
 
-#[derive(Serialize, Clone, Deserialize, Debug)]
-pub struct StockMin {
-    pub open: f64,
-    pub close: f64,
-    pub high: f64,
-    pub low: f64,
-    #[serde(rename = "vol")]
-    pub volume: f64,
-    pub amount: f64,
-    pub date: String,
-    pub datetime: String,
-    pub code: String,
-    //    date_stamp : f64,
-//    time_stamp : f64,
-    #[serde(rename = "type")]
-    pub frequence: String,
-
+impl Default for StockDay {
+    fn default() -> Self {
+        StockDay {
+            open: 0.0,
+            close: 0.0,
+            high: 0.0,
+            low: 0.0,
+            volume: 0.0,
+            amount: 0.0,
+            date: "1900-01-01".to_string(),
+            code: "".to_string(),
+        }
+    }
 }
 
+impl Handler for StockDay {
+    fn get_datetime(&self) -> String {
+        unimplemented!()
+    }
+
+    fn get_code(&self) -> String {
+        self.code.clone()
+    }
+
+    fn get_date(&self) -> String {
+        self.date.clone()
+    }
+
+    fn get_open(&self) -> f64 {
+        self.open.clone()
+    }
+
+    fn get_close(&self) -> f64 {
+        self.close.clone()
+    }
+
+    fn get_high(&self) -> f64 {
+        self.high.clone()
+    }
+
+    fn get_low(&self) -> f64 {
+        self.low.clone()
+    }
+
+    fn get_vol(&self) -> f64 {
+        self.volume.clone()
+    }
+
+    fn get_amount(&self) -> f64 {
+        self.amount.clone()
+    }
+
+    fn set_code(&mut self, code: String) {
+        self.code = code;
+    }
+
+    fn set_date(&mut self, date: String) {
+        self.date = date;
+    }
+
+    fn set_open(&mut self, open: f64) {
+        self.open = open
+    }
+
+    fn set_close(&mut self, close: f64) {
+        self.close = close;
+    }
+
+    fn set_high(&mut self, high: f64) {
+        self.high = high;
+    }
+
+    fn set_low(&mut self, low: f64) {
+        self.low = low;
+    }
+
+    fn set_vol(&mut self, vol: f64) {
+        self.volume = vol;
+    }
+
+    fn set_amount(&mut self, amount: f64) {
+        self.amount = amount
+    }
+}
+
+/// ---------------------------------------------------------------- FutureDay------------------------------------------------------------------------
 #[derive(Serialize, Clone, Deserialize, Debug)]
 pub struct FutureDay {
     pub open: f64,
@@ -342,9 +409,93 @@ pub struct FutureDay {
     pub volume: f64,
     pub date: String,
     pub code: String,
-//    date_stamp : f64
 }
 
+impl Default for FutureDay {
+    fn default() -> Self {
+        FutureDay {
+            open: 0.0,
+            close: 0.0,
+            high: 0.0,
+            low: 0.0,
+            volume: 0.0,
+            date: "1900-01-01".to_string(),
+            code: "".to_string(),
+        }
+    }
+}
+
+impl Handler for FutureDay {
+    fn get_datetime(&self) -> String {
+        unimplemented!()
+    }
+
+    fn get_code(&self) -> String {
+        self.code.clone()
+    }
+
+    fn get_date(&self) -> String {
+        self.date.clone()
+    }
+
+    fn get_open(&self) -> f64 {
+        self.open.clone()
+    }
+
+    fn get_close(&self) -> f64 {
+        self.close.clone()
+    }
+
+    fn get_high(&self) -> f64 {
+        self.high.clone()
+    }
+
+    fn get_low(&self) -> f64 {
+        self.low.clone()
+    }
+
+    fn get_vol(&self) -> f64 {
+        self.volume.clone()
+    }
+
+    fn get_amount(&self) -> f64 {
+        unimplemented!()
+    }
+
+    fn set_code(&mut self, code: String) {
+        self.code = code;
+    }
+
+    fn set_date(&mut self, date: String) {
+        self.date = date;
+    }
+
+    fn set_open(&mut self, open: f64) {
+        self.open = open
+    }
+
+    fn set_close(&mut self, close: f64) {
+        self.close = close;
+    }
+
+    fn set_high(&mut self, high: f64) {
+        self.high = high;
+    }
+
+    fn set_low(&mut self, low: f64) {
+        self.low = low;
+    }
+
+    fn set_vol(&mut self, vol: f64) {
+        self.volume = vol;
+    }
+
+    fn set_amount(&mut self, amount: f64) {
+        unimplemented!()
+    }
+}
+
+/// -------------------------------------------------------------------FutureMin ----------------------------------------------------------------------
 #[derive(Serialize, Clone, Deserialize, Debug)]
 pub struct FutureMin {
     pub open: f64,
@@ -362,6 +513,7 @@ pub struct FutureMin {
     pub amount: f64,
     pub tradetime: String,
 }
+
 
 impl Default for FutureMin {
     fn default() -> Self {
@@ -420,6 +572,25 @@ impl Handler for FutureMin {
     }
 }
 
+
+#[derive(Serialize, Clone, Deserialize, Debug)]
+pub struct StockMin {
+    pub open: f64,
+    pub close: f64,
+    pub high: f64,
+    pub low: f64,
+    #[serde(rename = "vol")]
+    pub volume: f64,
+    pub amount: f64,
+    pub date: String,
+    pub datetime: String,
+    pub code: String,
+    //    date_stamp : f64,
+//    time_stamp : f64,
+    #[serde(rename = "type")]
+    pub frequence: String,
+}
+
 impl Default for StockMin {
     fn default() -> Self {
         StockMin {
@@ -475,6 +646,7 @@ impl Handler for StockMin {
     }
 }
 
+/// ------------------------------------------------------------ Diff --------------------------------------------------------------------
 #[derive(Serialize, Clone, Deserialize, Debug)]
 pub struct Diff {
     instrument_id: String,
