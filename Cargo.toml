@@ -11,3 +11,4 @@ description = "描述为基本行情结构体吗,提供了一种较为统一式�
 serde = { version = "1.0", features = ["derive"] } # 序列化
 serde_json ="*"
 chrono = { version = "0.4", features = ["serde"] }
+regex = {version="1"}

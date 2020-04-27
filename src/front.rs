@@ -1,5 +1,6 @@
 use serde::{Deserialize, Serialize};
 use crate::base::Handler;
+use regex::Regex;
 
 #[derive(Deserialize, Clone, Serialize, Debug)]
 pub struct HqTrendSlice {
@@ -32,6 +33,57 @@ pub struct HqTrend {
     pub amount: f64,
     pub minutecount: f64,
     pub minute: Vec<HqTrendSlice>,
+}
+
+#[derive(Deserialize, Clone, Serialize, Debug)]
+pub struct HqKlineFormat {
+    pub data: Vec<Vec<f64>>,
+    pub symbol: String,
+    pub name: String,
+    pub end: f64,
+    pub start: f64,
+    pub count: f64,
+    pub ticket: f64,
+    pub version: String,
+    pub message: String,
+    pub code: f64,
+    pub servertime: String,
+}
+
+impl HqTrend {
+    /// 将任意初始的图转换为k线图所需要的格式
+    pub fn as_kline_format(&self) -> HqKlineFormat {
+        let mut data: Vec<Vec<f64>> = vec![];
+        let length = self.minute.len();
+        data.push(vec![self.covert_timestr_to_data_f64(self.minute[0].time.as_str()), self.yclose.clone(),
+                       self.minute[0].high.clone(), self.minute[0].low.clone(), self.minute[0].close.clone(), self.minute[0].vol, self.minute[0].amount.clone()]);
+        // 拿到第一个bar 直接送入最新的收盘价格
+        let mut close_pre = self.minute[0].close.clone();
+        for c in &self.minute[1..length] {
+            let temp = vec![self.covert_timestr_to_data_f64(c.time.as_str()), close_pre.clone(), c.open.clone(), c.high.clone(), c.low.clone(), c.close.clone(), c.vol.clone(), c.amount.clone()];
+            data.push(temp);
+            close_pre = c.close.clone();
+        };
+        HqKlineFormat {
+            data,
+            symbol: self.symbol.clone(),
+            name: self.name.clone(),
+            end: 0.0,
+            start: 0.0,
+            count: self.minutecount.clone(),
+            ticket: 0.0,
+            version: "2".to_string(),
+            message: "".to_string(),
+            code: 0.0,
+            servertime: self.time.clone(),
+        }
+    }
+    pub fn covert_timestr_to_data_f64(&self, timestr: &str) -> f64 {
+        let x: Vec<&str> = timestr.split(" ").collect::<Vec<&str>>();
+        let tt = x[0].replace("-", "");
+        assert_eq!(tt.len(), 8);
+        tt.parse::<f64>().unwrap()
+    }
 }
 
 
