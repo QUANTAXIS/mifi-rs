@@ -1,7 +1,7 @@
 use mifi::Mifi;
 
 use crate::base::Handler;
-use crate::front::{HqTrend, HqTrendSlice, Kline};
+use crate::front::{HqTrend, HqTrendSlice, Kline, Contract};
 use crate::func::{from_history, from_real};
 use crate::market::{CtpPro, Full, FullData};
 
@@ -19,6 +19,9 @@ pub mod market;
 
 /// 描述了前端格式
 pub mod front;
+
+
+pub mod market_preset;
 
 #[cfg(test)]
 mod tests {

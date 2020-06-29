@@ -1,6 +1,9 @@
 use serde::{Deserialize, Serialize};
 use crate::base::Handler;
 use regex::Regex;
+use super::market_preset::{MarketPreset};
+// use std::intrinsics::forget;
+// use std::fs::read_to_string;
 
 #[derive(Deserialize, Clone, Serialize, Debug)]
 pub struct HqTrendSlice {
@@ -230,3 +233,43 @@ impl Handler for Kline {
     }
 }
 
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Contract {
+    pub code: String,
+    pub name: String,
+}
+
+impl Contract {
+    pub fn to_symbol(&self) -> String {
+        let re = Regex::new(r"[a-zA-z]+").unwrap();
+        let mut market = MarketPreset::new();
+        let mk = market.get(self.code.as_ref());
+        if re.find(self.code.as_str()).is_some() {
+            return format!("future_{}_{}", mk.exchange, self.code);
+        } else {
+            let exchange = if self.code.starts_with("6") { "SH" } else { "SZ" };
+            return format!("stock_{}_{}", exchange, self.code);
+        }
+    }
+}
+
+mod tests {
+    use super::*;
+
+    #[test]
+    fn it_works() {
+        let x = r#"{
+        "code":"600000",
+        "name":"上海浦東發展銀行"
+        }"#;
+        let n: Contract = serde_json::from_str(x).unwrap();
+        println!("{}", n.to_symbol());
+
+        let c = r#"{
+        "code":"RB2010",
+        "name":"螺纹钢2010"
+        }"#;
+        let m: Contract = serde_json::from_str(c).unwrap();
+        println!("{}", m.to_symbol());
+    }
+}
