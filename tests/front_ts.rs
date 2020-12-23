@@ -1,9 +1,9 @@
 /// 主要用于前端行情接口测试
-use Mifi::front::{Kline, HqTrendSlice, HqTrend};
-use Mifi::mifi::Mifi as Mi;
+use mifi_rs::front::{Kline, HqTrendSlice, HqTrend};
+use mifi_rs::mifi::Mifi as Mi;
 use serde::{Serialize, Deserialize};
 use serde_json::Value;
-use Mifi::func::from_history;
+use mifi_rs::func::from_history;
 
 /// 测试转换为hqchart的分时线
 #[test]

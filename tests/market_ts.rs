@@ -1,11 +1,11 @@
 /// 测试各个级别的k线使用
 
 /// 主要用于前端行情接口测试
-use Mifi::market::FutureMin;
-use Mifi::mifi::Mifi as Mi;
+use mifi_rs::market::FutureMin;
+use mifi_rs::mifi::Mifi as Mi;
 use serde::{Serialize, Deserialize};
 use serde_json::Value;
-use Mifi::func::from_history;
+use mifi_rs::func::from_history;
 
 /// 测试转换为hqchart kline格式数据
 #[test]
