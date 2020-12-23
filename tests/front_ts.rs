@@ -26,9 +26,9 @@ fn hqchart_convert() {
     ]}"#;
     let c: TestStruct = serde_json::from_str(strings).unwrap();
     assert_eq!(c.data.len(), 7);
-    let mifi = from_history(c.data.clone(), 60.0, "future".to_string());
-    println!("mifi hqchart: {:?}", mifi.hqchart_trend());
-    assert_eq!(mifi.hqchart_trend().time, "2020-04-28 00:00:00.1");
+    let mifi_rs = from_history(c.data.clone(), 60.0, "future".to_string());
+    println!("mifi_rs hqchart: {:?}", mifi_rs.hqchart_trend());
+    assert_eq!(mifi_rs.hqchart_trend().time, "2020-04-28 00:00:00.1");
 }
 
 
