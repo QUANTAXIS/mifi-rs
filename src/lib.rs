@@ -1,3 +1,4 @@
+
 use mifi::Mifi;
 
 use crate::base::Handler;
@@ -6,6 +7,12 @@ use crate::func::{from_history, from_real};
 use crate::market::{CtpPro, Full, FullData};
 
 /// 描述了相关方法函数
+pub mod dataframe;
+pub mod qafastkline;
+
+
+pub mod qamarketset;
+pub mod marketset;
 pub mod func;
 
 /// 描述了核心需求
