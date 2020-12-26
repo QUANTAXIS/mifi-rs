@@ -9,7 +9,7 @@ use crate::market::{CtpPro, Full, FullData};
 /// 描述了相关方法函数
 pub mod dataframe;
 pub mod qafastkline;
-
+pub mod kline;
 
 pub mod qamarketset;
 pub mod marketset;
