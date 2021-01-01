@@ -19,6 +19,6 @@ license = "MIT OR Apache-2.0"
 
 [dependencies]
 serde = { version = "1.0", features = ["derive"] } # 序列化
-serde_json ="*"
+serde_json ="1.0.59"
 chrono = { version = "0.4", features = ["serde"] }
 regex = {version="1"}
