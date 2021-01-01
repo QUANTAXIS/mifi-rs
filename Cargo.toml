@@ -3,7 +3,17 @@ name = "mifi-rs"
 version = "0.3.0"
 authors = ["yutiansut <yutian@quantaxis.com.cn>","somewheve <somewheve@gmail.com>",]
 edition = "2018"
-description = "描述为基本行情结构体吗,提供了一种较为统一式转换方法"
+description = "QUANTAXIS MIFI 行情封装协议"
+
+
+readme = "README.md"
+keywords = ["actix", "http", "web", "framework", "async"]
+homepage = "https://github.com/yutiansut"
+repository = "https://github.com/yutiansut/mifi-rs"
+documentation = "https://docs.rs/mifi-rs/"
+categories = ["science", "algorithms"]
+license = "MIT OR Apache-2.0"
+
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
